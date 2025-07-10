@@ -1,0 +1,16 @@
+<template name="todoDetails">
+  <h1>Todo Details</h1>
+  <hr />
+
+  <div class="d-flex align-items-center gap-3">
+    {{#with currentTodo}}
+    <h2>{{title}}</h2>
+    {{#if isPrivate}}
+    <h6 class="text-danger">Private</h6>
+    {{else}}
+    <h6 class="text-primary">Public</h6>
+    {{/if}} {{else}}
+    <p>Todo not found</p>
+    {{/with}}
+  </div>
+</template>
