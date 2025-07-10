@@ -1,0 +1,16 @@
+<template name="users">
+  {{> loginButtons}}
+  <h1>Users</h1>
+
+  {{#if getCurrentUser}}
+  <ul>
+    {{#each getUsers}} {{#if profile}}
+    <li>Facebook: {{profile.name}}</li>
+    {{else}}
+    <li>Accounts: {{getEmails emails}}</li>
+    {{/if}} {{/each}}
+  </ul>
+  {{else}}
+  <h5 class="text-danger">Login First</h5>
+  {{/if}}
+</template>

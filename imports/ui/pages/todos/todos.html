@@ -1,0 +1,24 @@
+<template name="todos">
+  <h1>Todos</h1>
+
+  <form action="" class="todo-form">
+    <input type="text" class="title" />
+    <button type="submit" class="submit-btn">Add</button>
+    <br />
+    <label for="private">Private</label>
+    <input type="checkbox" name="private" id="private" class="private" />
+  </form>
+
+  <ul>
+    {{#each getTodos}}
+    <div class="d-flex align-items-center mb-2 gap-2">
+      {{#if isPrivate}}
+      <li class="text-danger">{{title}}</li>
+      {{else}}
+      <li class="text-primary">{{title}}</li>
+      {{/if}}
+      <button class="delete-btn btn btn-danger">X</button>
+    </div>
+    {{/each}}
+  </ul>
+</template>
