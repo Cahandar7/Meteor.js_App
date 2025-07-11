@@ -3,7 +3,8 @@
 
   <form action="" class="todo-form">
     <input type="text" class="title" />
-    <button type="submit" class="submit-btn">Add</button>
+    <button type="submit" class="btn btn-primary submit-btn">Add</button>
+    <button class="btn btn-danger my-3 clear-btn">Clear</button>
     <br />
     <label for="private">Private</label>
     <input type="checkbox" name="private" id="private" class="private" />
@@ -18,7 +19,7 @@
       <li class="text-primary">{{title}}</li>
       {{/if}}
       <button class="delete-btn btn btn-danger">X</button>
-      <a href="/todos/{{_id}}" class="info-btn btn btn-primary">Info</a>
+      <a href="/todos/{{_id}}" class="info-btn btn btn-warning">Info</a>
     </div>
     {{/each}}
   </ul>

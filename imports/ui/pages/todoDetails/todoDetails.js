@@ -3,9 +3,15 @@ import { Todos } from "../../../api/todos/collections";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 
 Template.todoDetails.onCreated(function () {
+  this.autorun(() => {
+    let query = { userId: Meteor.userId() };
+    this.subscribe("getTodosFromServer", query);
+  });
+
   this.todoId = new ReactiveVar();
 
   this.autorun(() => {
+    FlowRouter.watchPathChange();
     this.todoId.set(FlowRouter.getParam("_id"));
   });
 });
