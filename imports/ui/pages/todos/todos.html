@@ -1,14 +1,23 @@
 <template name="todos">
   <h1>Todos</h1>
 
-  <form action="" class="todo-form">
-    <input type="text" class="title" />
-    <button type="submit" class="btn btn-primary submit-btn">Add</button>
-    <button class="btn btn-danger my-3 clear-btn">Clear</button>
-    <br />
-    <label for="private">Private</label>
-    <input type="checkbox" name="private" id="private" class="private" />
-  </form>
+  <div class="d-flex gap-0 align-items-start">
+    <form action="" class="todo-form">
+      <input type="text" class="title" />
+      <button type="submit" class="btn btn-primary submit-btn">Add</button>
+      <br />
+      <input type="file" name="todoImg" id="todoImg" />
+      <br />
+      <br />
+      <label for="private">Private</label>
+      <input type="checkbox" name="private" id="private" class="private" />
+    </form>
+    <button class="btn btn-danger mx-0 clear-btn">Clear</button>
+  </div>
+
+  {{#if isLoading}}
+  <h1>Loading...</h1>
+  {{/if}}
 
   <ul>
     {{#each getTodos}}

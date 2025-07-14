@@ -9,7 +9,11 @@
     <h6 class="text-danger">Private</h6>
     {{else}}
     <h6 class="text-primary">Public</h6>
-    {{/if}} {{else}}
+    {{/if}} 
+    {{#if getImg}}
+    <img src="{{getImg}}" alt="Todo Image" width="500" height="250" />
+    {{/if}} 
+    {{else}}
     <p>Todo not found</p>
     {{/with}}
   </div>

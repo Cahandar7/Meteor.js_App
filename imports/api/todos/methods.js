@@ -1,4 +1,4 @@
-import { Todos } from "./collections";
+import { Todos, Todos_Images } from "./collections";
 
 Meteor.methods({
   addTodo: function (data) {
@@ -6,9 +6,15 @@ Meteor.methods({
   },
   deleteTodo: function (query) {
     query.userId = Meteor.userId();
-    return Todos.remove(query);
+    let result = Todos.remove(query);
+    if (result) {
+      Todos_Images.remove({ "meta.todoId": query._id });
+    }
   },
   deleteTodos: function () {
-    return Todos.remove({ userId: Meteor.userId() });
+    let result = Todos.remove({ userId: Meteor.userId() });
+    if (result) {
+      Todos_Images.remove({});
+    }
   },
 });
