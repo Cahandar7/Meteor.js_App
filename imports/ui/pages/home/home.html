@@ -1,1 +1,9 @@
-<template name="home"><h1>Welcome to Home</h1></template>
+<template name="home">
+  <div class="d-flex gap-2 align-items-center">
+    <h1>Welcome Back,</h1>
+    <h1 style="color: rgb(177, 177, 58)">
+      {{#if getUser}} {{getUser.username}}!{{else}}Unknown User!{{/if}}
+    </h1>
+  </div>
+  <button class="btn btn-dark logout-btn mt-3">Logout</button>
+</template>

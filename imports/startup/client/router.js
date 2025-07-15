@@ -10,6 +10,7 @@ import "../../ui/pages/todos/todos";
 import "../../ui/pages/todoDetails/todoDetails";
 import "../../ui/pages/users/users";
 import "../../ui/pages/notFound/notFound";
+import "../../ui/pages/forgotPassword/forgotPassword";
 
 function authMiddleware(context, redirect) {
   if (!Meteor.userId() && !Meteor.loggingIn()) {
@@ -18,7 +19,7 @@ function authMiddleware(context, redirect) {
 }
 
 FlowRouter.triggers.enter([authMiddleware], {
-  only: ["Todos", "TodoDetails"],
+  only: ["Todos", "TodoDetails", "Home"],
 });
 
 FlowRouter.route("/", {
@@ -46,6 +47,13 @@ FlowRouter.route("/users", {
   name: "Users",
   action() {
     BlazeLayout.render("mainLayout", { main: "users" });
+  },
+});
+
+FlowRouter.route("/forgot-password", {
+  name: "ForgotPassword",
+  action() {
+    BlazeLayout.render("mainLayout", { main: "forgot_password" });
   },
 });
 

@@ -1,16 +1,96 @@
 <template name="users">
-  {{> loginButtons}}
-  <h1>Users</h1>
+  <!-- {{> loginButtons}} -->
+  <div class="mb-5">
+    <h1 class="mb-3">Auth</h1>
 
-  {{#if getCurrentUser}}
-  <ul>
-    {{#each getUsers}} {{#if profile}}
-    <li>Facebook: {{profile.name}}</li>
-    {{else}}
-    <li>Accounts: {{getEmails emails}}</li>
-    {{/if}} {{/each}}
-  </ul>
-  {{else}}
-  <h5 class="text-danger">Login First</h5>
+    {{#if getCurrentUser}}
+    <h3>
+      User :
+      <span style="color: rgb(35, 205, 89)">{{getCurrentUser.username}}</span>
+    </h3>
+    {{/if}}
+  </div>
+
+  <hr />
+  <hr />
+  <hr />
+
+  {{#unless getCurrentUser}}
+  <form class="mb-3" id="register-form">
+    <h3>Register</h3>
+    <br />
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputUsername" class="form-label">Username</label>
+      <input type="text" class="form-control" id="exampleInputUsername" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputFullname" class="form-label">Fullname</label>
+      <input type="text" class="form-control" id="exampleInputFullname" />
+    </div>
+    <button type="submit" class="btn btn-primary">Ok</button>
+  </form>
+
+  <hr />
+  <hr />
+  <hr />
+
+  <form class="mt-3" id="login-form">
+    <h3>Login</h3>
+    <br />
+    <div class="mb-3">
+      <label for="exampleInputUsername" class="form-label">Username</label>
+      <input type="text" class="form-control" id="exampleInputUsername2" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword2" />
+    </div>
+    <button type="submit" class="btn btn-primary">Ok</button>
+    <br />
+    <a href="/forgot-password">Forgot Password</a>
+  </form>
+
+  <hr />
+  <hr />
+  <hr />
+  {{/unless}} {{#if getCurrentUser}}
+  <form class="mt-3" id="change-password-form">
+    <h3>Change Password</h3>
+    <br />
+    <div class="mb-3">
+      <label for="exampleInputOldPassword" class="form-label"
+        >Old Password</label
+      >
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputOldPassword"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputNewPassword" class="form-label"
+        >New Password</label
+      >
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputNewPassword"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Ok</button>
+  </form>
   {{/if}}
 </template>
